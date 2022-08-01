@@ -1,0 +1,28 @@
+version: '2'
+services:
+    web:
+        container_name: web_nginx
+        image: nginx:latest
+        ports:
+            - "80:80"
+        volumes:
+            - ./apps/public_html:/apps/public_html
+            - ./config-files/nginx/default.conf:/etc/nginx/conf.d/default.conf
+        links:
+            - php
+        networks:
+           - networks
+
+    php:
+        container_name: php7-fpm
+        build:
+            context: ./
+            dockerfile: config-files/php/Dockerfile
+        volumes:
+            - ./apps/public_html:/apps/public_html
+        networks:
+            - networks
+
+networks:
+    networks:
+        driver: bridge

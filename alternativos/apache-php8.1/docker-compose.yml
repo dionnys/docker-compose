@@ -1,0 +1,32 @@
+version: '2'
+services:
+    web:
+        container_name: web_apache
+        build:
+            context: ./
+            dockerfile: config-files/apache2/Dockerfile
+        ports:
+            - "80:80"
+        volumes:
+           - ./apps/public_html:/apps/public_html
+           - ./config-files/apache2/httpd.conf:/usr/local/apache2/conf/httpd.conf
+        links:
+            - php
+        networks:
+           - networks
+        restart: always
+
+    php:
+        container_name: php-8.1
+        build:
+            context: ./
+            dockerfile: config-files/php/Dockerfile
+        volumes:
+          - ./apps/public_html:/apps/public_html
+        networks:
+            - networks
+        restart: always
+
+networks:
+    networks:
+        driver: bridge
