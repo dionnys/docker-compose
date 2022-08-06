@@ -55,10 +55,8 @@ RUN docker-php-source extract \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 #setup composer
-RUN EXPECTED_CHECKSUM="$(wget -q -O - https://composer.github.io/installer.sig)" && \
-	php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
-	ACTUAL_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")" && \
-	if [ "$EXPECTED_CHECKSUM" != "$ACTUAL_CHECKSUM" ]; then >&2 echo 'ERROR: Invalid installer checksum' && exit 1; fi
+RUN curl -sS https://getcomposer.org/installer | php -- \
+    --install-dir=/usr/bin --filename=composer && chmod +x /usr/bin/composer
 
 #copy environment variables
 COPY .env /apps/
