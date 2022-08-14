@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+    kali-service:
+        container_name: Kalilinux
+        build:
+            context: ./
+            dockerfile: config-files/Dockerfile
+            args:
+                SSH_USER: ${SSH_USER}
+                SSH_PASSWORD: ${SSH_PASSWORD}
+        volumes:
+        - ./user:/home/${SSH_USER}
+
+        ports:
+        - "2222:2222"
+        restart: always
