@@ -4,3 +4,5 @@ sudo halt
 sudo su
 exity
 exit
+zsh
+exit

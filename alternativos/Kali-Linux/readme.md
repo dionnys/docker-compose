@@ -7,7 +7,7 @@ The current project will create a working image of Kali Linux with the followin 
 - metasploit-framework
 - nmap
 - powersploit
-- python- pip
+- python-pip
 - python3
 - vim
 - sudo
@@ -15,6 +15,7 @@ The current project will create a working image of Kali Linux with the followin 
 - wget
 - sudo
 - nano
+- zsh
 - git
 - net-tools
 - whois

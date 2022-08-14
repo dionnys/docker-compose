@@ -1,4 +1,4 @@
-# Kali Linux latest with useful tools by tsumarios
+# Kali Linux latest with useful tools
 FROM kalilinux/kali-rolling
 
 ARG SSH_USER
@@ -7,7 +7,7 @@ ARG SSH_PASSWORD
 WORKDIR /root
 
 # Update
-RUN apt -y update && DEBIAN_FRONTEND=noninteractive apt -y dist-upgrade && apt -y autoremove && apt clean
+RUN apt -y update && DEBIAN_FRONTEND=noninteractive apt -y dist-upgrade
 
 # Install common and useful tools
 RUN apt -y install curl wget sudo vim nano git net-tools whois netcat-traditional pciutils usbutils openssh-server -y
@@ -42,6 +42,7 @@ COPY config-files/.zshrc .
 # Clean up
 RUN apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-CMD tail -f /dev/null
-#ENTRYPOINT ["/bin/zsh"]
+
+CMD  tail -f /dev/null
