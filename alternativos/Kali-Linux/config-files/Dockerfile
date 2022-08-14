@@ -17,7 +17,7 @@ RUN apt -y install curl wget sudo vim nano git net-tools whois netcat-traditiona
 RUN apt -y install python3-pip golang nodejs npm
 
 # Install Kali Linux "Top 10" metapackage and a few cybersecurity useful tools
-RUN DEBIAN_FRONTEND=noninteractive apt -y install kali-tools-top10 exploitdb metasploit-framework powersploit man-db dirb nikto iputils-ping wpscan uniscan lsof apktool dex2jar  strace binwalk
+RUN DEBIAN_FRONTEND=noninteractive apt -y install kali-tools-top10 exploitdb elinks tshark  metasploit-framework powersploit man-db dirb nikto iputils-ping wpscan uniscan lsof apktool dex2jar  strace binwalk
 
 # Config services ssh
 RUN echo "root:${SSH_PASSWORD}" | chpasswd
