@@ -106,3 +106,4 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 
 alias ls="ls -lh"
 alias ll="ls -lha"
+alias python="python3"
